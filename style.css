@@ -333,9 +333,12 @@ nav a:hover::after {
 /* ================= ABOUT PREMIUM ================= */
 
 .about {
+  position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(180deg, #f8fbff 0%, #f3f7ff 100%);
 }
 .about-header {
   text-align: center;
@@ -408,13 +411,14 @@ nav a:hover::after {
 .about::after {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(58,134,255,0.15), transparent 70%);
-  bottom: -200px;
-  left: -200px;
-  filter: blur(100px);
-  z-index: 0;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(58,134,255,0.08), transparent 70%);
+  bottom: -120px;
+  left: -120px;
+  filter: blur(80px);
+  z-index: -1; /* keep decoration behind content */
+  opacity: 0.95;
 }
 
 .about-card:hover {
@@ -487,8 +491,31 @@ nav a:hover::after {
 /* ================= DOCTOR PREMIUM FIX ================= */
 
 .doctor {
+  position: relative;
   padding: 120px 0;
-  background: linear-gradient(to right, #f8fbff, #eef6ff);
+  background: linear-gradient(180deg, #f3f7ff 0%, #eef6ff 100%);
+}
+
+/* subtle separator between about and doctor */
+.about + .doctor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(58,134,255,0.06), rgba(58,134,255,0.14), rgba(58,134,255,0.06));
+  box-shadow: 0 10px 30px rgba(58,134,255,0.06);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .about + .doctor::before {
+    width: 40%;
+    height: 4px;
+  }
 }
 
 .doctor-grid {
