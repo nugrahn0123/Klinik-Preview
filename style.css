@@ -701,6 +701,48 @@ footer {
   background: #f0f4ff;
   transform: translateY(-3px);
 }
+
+.booking-form {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text);
+  background: rgba(255,255,255,0.96);
+}
+
+.booking-form textarea {
+  resize: vertical;
+  margin-bottom: 16px;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  outline: 2px solid rgba(255,255,255,0.65);
+  outline-offset: 1px;
+}
+
+.booking-form .btn-cta {
+  border: none;
+  cursor: pointer;
+}
+
 .icon {
   width: 40px;
   height: 40px;
@@ -726,6 +768,10 @@ footer {
 
   .about-header h2 {
     font-size: 26px;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
   }
 
 }

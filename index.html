@@ -225,7 +225,22 @@
   <div class="container">
     <h2>Siap Mendapatkan Kulit Sehat & Glow Natural?</h2>
     <p>Konsultasikan kebutuhan kulit Anda bersama dokter estetika profesional kami.</p>
-    <a href="https://wa.me/6281234567890" class="btn-cta">Booking Sekarang</a>
+
+    <form id="booking-form" class="booking-form">
+      <div class="booking-grid">
+        <input type="text" id="booking-name" name="name" placeholder="Nama Lengkap" required>
+        <input type="tel" id="booking-phone" name="phone" placeholder="No. WhatsApp Aktif" required>
+        <select id="booking-treatment" name="treatment" required>
+          <option value="" selected disabled>Pilih Treatment</option>
+          <option value="Facial Rejuvenation">Facial Rejuvenation</option>
+          <option value="Laser Treatment">Laser Treatment</option>
+          <option value="Botox & Filler">Botox & Filler</option>
+          <option value="Konsultasi Dokter">Konsultasi Dokter</option>
+        </select>
+      </div>
+      <textarea id="booking-note" name="note" rows="4" placeholder="Keluhan / kebutuhan kulit Anda (opsional)"></textarea>
+      <button type="submit" class="btn-cta">Booking Sekarang</button>
+    </form>
   </div>
 </section>
 
@@ -233,13 +248,6 @@
   <p>© 2026 Azure Glow Aesthetic Clinic</p>
 </footer>
 
-<script>
-const toggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector("nav");
-toggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
-</script>
     <script>
     const faders = document.querySelectorAll(".fade-up");
 
@@ -258,6 +266,7 @@ toggle.addEventListener("click", () => {
     </script>
     <script>
 const navbar = document.querySelector(".navbar");
+    const nav = document.querySelector("nav");
 
 window.addEventListener("scroll", () => {
   if(window.scrollY > 50){
@@ -273,6 +282,34 @@ const menuToggle = document.querySelector(".menu-toggle");
 menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
 });
+</script>
+
+<script>
+const bookingForm = document.querySelector("#booking-form");
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.querySelector("#booking-name").value.trim();
+    const phone = document.querySelector("#booking-phone").value.trim();
+    const treatment = document.querySelector("#booking-treatment").value;
+    const note = document.querySelector("#booking-note").value.trim();
+
+    const whatsappNumber = "6281234567890";
+    const message = [
+      "Halo Azure Glow Clinic, saya ingin booking treatment.",
+      "",
+      `Nama: ${name}`,
+      `No. WhatsApp: ${phone}`,
+      `Treatment: ${treatment}`,
+      `Keluhan: ${note || "-"}`
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  });
+}
 </script>
 
 </body>
