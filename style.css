@@ -573,11 +573,11 @@ nav a:hover::after {
   }
 
   .result-images {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .result-item img {
-    height: 220px;
+    height: 150px;
   }
 
   .about-content {
